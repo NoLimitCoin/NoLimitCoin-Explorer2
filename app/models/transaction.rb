@@ -11,4 +11,9 @@ class Transaction < ActiveRecord::Base
 
   # Enumerations
   enum tx_type: {normal: 1, stake: 2, new_coins: 3}
+
+
+  def value_out
+    outputs.collect(&:value).inject(&:+)
+  end
 end

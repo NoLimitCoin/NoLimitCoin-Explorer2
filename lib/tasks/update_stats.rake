@@ -8,9 +8,9 @@ namespace :stats do
 
     begin
 
-    # Updating stats every 5 minutes
+    # Updating stats every minute
     last_stat = Stat.last
-    if (DateTime.current.to_i - last_stat.try(:created_at).try(:to_i)|| 0) >= 300
+    if (DateTime.current.to_i - (last_stat.try(:created_at).try(:to_i) || 0)) >= 60
       puts "Updating stats."
       Stat.create!({
          supply: coin_stats["moneysupply"],

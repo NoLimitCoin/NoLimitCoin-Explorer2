@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20171119910713) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "address"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "port"
     t.decimal "lat",             precision: 10
     t.decimal "long",            precision: 10
+    t.string  "country_code"
     t.string  "country"
     t.string  "city"
     t.string  "services"
@@ -73,12 +74,12 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "stats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.decimal  "supply",           precision: 10
-    t.decimal  "pos_difficulty",   precision: 10
+    t.decimal  "supply",           precision: 18, scale: 8
+    t.decimal  "pos_difficulty",   precision: 18, scale: 8
     t.integer  "blocks"
-    t.decimal  "net_stake_weight", precision: 10
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.bigint   "net_stake_weight"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "transaction_inputs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

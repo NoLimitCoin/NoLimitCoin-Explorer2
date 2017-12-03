@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NolimitcoinExplorer2</title>
+    <title>Nolimitcoin2 Explorer</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "/header" %>
+    <div class="main-container">
+      <%= yield %>
+    </div>
+    <%= render "/footer" %>
   </body>
 </html>

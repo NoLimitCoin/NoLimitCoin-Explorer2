@@ -78,18 +78,17 @@ module HttpService
     # Date:: 26/11/2017
     # Reviewed By::
     #
-    # Params:
-    # +json_headers+:: headers to be sent with json request
-    def get_json(json_headers, trials = 3)
-      tries ||= trials
-      response = https.get(uri, json_headers)
+    def get_json(data = {})
+      log_request(uri, data.to_json)
+
+      request = Net::HTTP::Get.new(uri.request_uri)
+      request.content_type = 'application/json'
+      request.body = data.to_json
+
+      response = https.request(request)
       _response = JSON.parse(response.body)
       log_response(uri, _response) if _response.present?
       _response
-    rescue Exception => e
-      if (tries -= 1) > 0
-        retry
-      end
     end
 
     # make a http put request with json data

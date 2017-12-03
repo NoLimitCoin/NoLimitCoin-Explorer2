@@ -1,0 +1,106 @@
+<div class="col-md-6">
+  <div class="col-xs-4">
+    <div class="panel panel-default center">
+      <div class="panel-heading">
+        BTC price
+      </div>
+      <div class="panel-body center">
+        <span>
+         <%= @cmc_data["price_btc"] %> <i class="fa fa-btc"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        USD price
+      </div>
+      <div class="panel-body center">
+        <span>
+          $ <%= number_to_human(@cmc_data["price_usd"]) %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        Market Cap
+      </div>
+      <div class="panel-body center">
+        <span>
+          $ <%= number_to_human(@cmc_data["market_cap_usd"]).gsub("Million", "M") %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        Blocks
+      </div>
+      <div class="panel-body center">
+        <span>
+         <%= @stats.blocks %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        POS difficulty
+      </div>
+      <div class="panel-body center">
+        <span>
+          <%= @stats.pos_difficulty %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        Coin Supply
+      </div>
+      <div class="panel-body center">
+        <span>
+         <%= number_to_human(@cmc_data["available_supply"]).gsub("Million", "M") %> NLC2
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Block Index</th>
+      <th>Block Hash</th>
+      <th>Age</th>
+      <th>Transactions</th>
+      <th>Total Output</th>
+      <th>Difficulty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blocks.each do |block| %>
+      <tr>
+        <td> <%= block.block_index %> </td>
+        <td> <%= block.block_hash %> </td>
+        <td> <%= time_ago_in_words(block.time) %> </td>
+        <td class="center"> <%= block.transactions.length %> </td>
+        <td> <%= block.transactions.collect(&:value_out).inject(&:+) %> </td>
+        <td> <%= block.difficulty %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row center">
+  <%= will_paginate @blocks, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 3 %>
+</div>
