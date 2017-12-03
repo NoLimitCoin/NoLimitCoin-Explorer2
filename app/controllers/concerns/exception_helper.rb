@@ -13,6 +13,7 @@ module ExceptionHelper
 
     def log_and_send_exception_mail(e)
       logger.error e
+      logger.error e.backtrace
       browser_data = Util.detect_browser(request.env['HTTP_USER_AGENT'])
       data = {
           params: params.as_json,

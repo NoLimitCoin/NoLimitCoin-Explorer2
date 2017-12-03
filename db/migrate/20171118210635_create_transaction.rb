@@ -18,6 +18,7 @@ class CreateTransaction < ActiveRecord::Migration[5.0]
 
       t.index :tx_hash
       t.index :block_hash
+      t.index :block_id
     end
   end
 end

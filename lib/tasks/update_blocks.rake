@@ -47,7 +47,7 @@ namespace :blocks do
         modifier: block_data["modifier"],
         modifier_checksum: block_data["modifierchecksum"],
         signature: block_data["signature"],
-        confirmation: block_data["confirmations"],
+        confirmations: block_data["confirmations"],
         size: block_data["size"],
         height: block_data["height"],
         version: block_data["version"],

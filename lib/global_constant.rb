@@ -11,6 +11,10 @@ module GlobalConstant
   RPC_HOST = rpc_config['host']
   RPC_PORT = rpc_config['port']
 
+  # Coin
+  COIN_NAME = env_constants['coin']['name']
+  COIN_SYMBOL = env_constants['coin']['symbol']
+
   # Pagination
   DEFAULT_PER_PAGE = env_constants['pagination']['default_per_page']
 

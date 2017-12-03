@@ -3,5 +3,15 @@ Rails.application.routes.draw do
 
   get '/' => 'blocks#index'
 
-  resources :blocks, only: [:index]
+  resources :blocks, only: [:index, :show] do
+    collection do
+      get 'block', action: :show
+    end
+  end
+
+  resources :transactions, only: [:index, :show] do
+    collection do
+      get 'transaction', action: :show
+    end
+  end
 end

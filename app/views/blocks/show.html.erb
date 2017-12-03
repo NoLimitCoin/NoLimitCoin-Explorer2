@@ -1,0 +1,93 @@
+<div class="row">
+  <h2>
+    <span class="hidden-xs">Details for </span>Block #<%= @block.block_index %>
+  </h2>
+  <table class="table" id="details">
+    <tbody>
+      <tr>
+        <td>Hash</td>
+        <td>
+          <% if @block.block_index > 0 %>
+            <%= link_to block_blocks_path({block_index: @block.block_index - 1}) do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            <% end %>
+          <% end %>
+
+          <code class="hash">
+            <%= @block.block_hash %>
+          </code>
+
+          <% if Block.where(block_index: @block.block_index + 1).count > 0  %>
+            <%= link_to block_blocks_path({block_index: @block.block_index + 1}) do %>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Date/Time</td>
+        <td>
+          <%= @block.time %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Transactions</td>
+        <td>
+          <%= @block.transactions.length %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Value Out</td>
+        <td class="amount">
+          <%= number_to_human(@block.value_out) %> <%= GlobalConstant::COIN_SYMBOL %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Difficulty</td>
+        <td><%= @block.difficulty %></td>
+      </tr>
+
+      <tr>
+        <td>Confirmations</td>
+        <td> <%= @block.confirmations %> </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Created</b>
+        </td>
+        <td class="amount">
+          <%= @block.stake_value %> <%= GlobalConstant::COIN_SYMBOL %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#blocks" data-toggle="tab">Transactions</a></li>
+</ul>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Transaction Hash</th>
+    <th>Confirmations</th>
+    <th>Created</th>
+    <th>Value Out</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @block.transactions.each do |tx| %>
+      <tr>
+        <td> <%= link_to tx.tx_hash, transaction_path(tx) %> </td>
+        <td class="center"> <%= tx.confirmations %> </td>
+        <td> <%= number_to_human(tx.stake_value) %> </td>
+        <td> <%= tx.value_out %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

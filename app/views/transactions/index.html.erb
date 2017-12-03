@@ -1,0 +1,28 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#transactions" data-toggle="tab">Transactions</a></li>
+</ul>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Transaction Hash</th>
+    <th>Confirmations</th>
+    <th>Created</th>
+    <th>Value Out</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @transactions.each do |tx| %>
+      <tr>
+        <td> <%= link_to tx.tx_hash, transaction_path(tx) %> </td>
+        <td class="center"> <%= tx.confirmations %> </td>
+        <td> <%= number_to_human(tx.stake_value) %> </td>
+        <td> <%= tx.value_out %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="row center">
+  <%= will_paginate @transactions, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 3 %>
+</div>

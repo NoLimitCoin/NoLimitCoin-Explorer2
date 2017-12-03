@@ -11,7 +11,7 @@ class CreateBlock < ActiveRecord::Migration[5.0]
       t.string :modifier_checksum
       t.string :signature
 
-      t.integer :confirmation
+      t.integer :confirmations
       t.integer :size
       t.integer :height
       t.integer :version
