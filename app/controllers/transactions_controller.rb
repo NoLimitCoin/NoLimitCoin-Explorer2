@@ -39,6 +39,6 @@ class TransactionsController < ApplicationController
       tx_query = {}
     end
 
-    @tx = Transaction.includes(:input_addresses, :output_addresses).find_by(tx_query)
+    @tx = Transaction.includes(:block, inputs: [:input_address, :input_transaction], outputs: [:output_address]).find_by(tx_query)
   end
 end

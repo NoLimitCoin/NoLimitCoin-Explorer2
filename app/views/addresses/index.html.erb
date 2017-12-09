@@ -1,0 +1,9 @@
+<div class="row center">
+  <div class="col-md-8 mbm">
+    <h4 class="left">Company Addresses</h4>
+      <%= render 'addresses/addresses_table', addresses: @company_addresses, offset: 1, paginate: false %>
+
+    <h4 class="left">Addresses</h4>
+    <%= render 'addresses/addresses_table', addresses: @addresses, offset: @addresses.offset + 1, paginate: true %>
+  </div>
+</div>

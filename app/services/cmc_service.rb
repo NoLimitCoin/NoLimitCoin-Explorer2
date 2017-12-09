@@ -9,9 +9,14 @@ class CmcService
     # Reviewed By::
     #
     def get_ticker_data
-      uri = GlobalConstant::CMC_URL + GlobalConstant::CMC_TICKER + '/'
-      connection = HttpService::Connection.new(uri)
-      connection.get_json
+      begin
+        uri = GlobalConstant::CMC_URL + GlobalConstant::CMC_TICKER + '/'
+        connection = HttpService::Connection.new(uri)
+        connection.get_json
+      rescue Exception => e
+        Rails.logger.error e.message
+        Rails.logger.error e.backtrace
+      end
     end
   end
 end

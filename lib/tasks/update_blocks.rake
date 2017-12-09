@@ -111,9 +111,13 @@ namespace :blocks do
     end
 
     case tx.inputs.count
+      # if no inputs, these are new coins
       when 0
         tx.tx_type = 'new_coins'
+        tx.stake_value = tx.outputs.first.value
+        tx.stake_address = tx.outputs.first.output_address.try(:address)
         tx.save
+      # checking if transactions
       when 1
         if tx.input_addresses == tx.output_addresses.uniq
           tx_input = tx.inputs.first
@@ -124,6 +128,7 @@ namespace :blocks do
 
           tx.tx_type = 'stake'
           tx.stake_value = stake
+          tx.stake_address = tx.input_addresses.first.address
           tx.save
 
           addr = tx.input_addresses.first

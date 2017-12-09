@@ -6,7 +6,7 @@
       </div>
       <div class="panel-body center">
         <span>
-         <%= @cmc_data["price_btc"] %> <i class="fa fa-btc"></i>
+         <%= @cmc_data["price_btc"] if @cmc_data.present? %> <i class="fa fa-btc"></i>
         </span>
       </div>
     </div>
@@ -18,7 +18,7 @@
       </div>
       <div class="panel-body center">
         <span>
-          $ <%= number_to_human(@cmc_data["price_usd"]) %>
+          $ <%= number_to_human(@cmc_data["price_usd"]) if @cmc_data.present? %>
         </span>
       </div>
     </div>
@@ -30,7 +30,7 @@
       </div>
       <div class="panel-body center">
         <span>
-          $ <%= number_to_human(@cmc_data["market_cap_usd"]).gsub("Million", "M") %>
+          $ <%= number_to_human(@cmc_data["market_cap_usd"]).gsub("Million", "M") if @cmc_data.present? %>
         </span>
       </div>
     </div>
@@ -69,7 +69,7 @@
       </div>
       <div class="panel-body center">
         <span>
-         <%= number_to_human(@cmc_data["available_supply"]).gsub("Million", "M") %> NLC2
+         <%= number_to_human(@stats.supply).gsub("Million", "M") %> NLC2
         </span>
       </div>
     </div>

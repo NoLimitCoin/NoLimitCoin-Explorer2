@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20171119910713) do
     t.string   "modifier"
     t.string   "modifier_checksum"
     t.string   "signature"
-    t.integer  "confirmation"
+    t.integer  "confirmations"
     t.integer  "size"
     t.integer  "height"
     t.integer  "version"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20171119910713) do
     t.integer  "block_id"
     t.string   "tx_hash"
     t.string   "block_hash"
+    t.string   "stake_address"
     t.integer  "tx_type",                                default: 1
     t.decimal  "stake_value",   precision: 18, scale: 8, default: "0.0"
     t.integer  "confirmations"
@@ -125,6 +126,7 @@ ActiveRecord::Schema.define(version: 20171119910713) do
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
     t.index ["block_hash"], name: "index_transactions_on_block_hash", using: :btree
+    t.index ["block_id"], name: "index_transactions_on_block_id", using: :btree
     t.index ["tx_hash"], name: "index_transactions_on_tx_hash", using: :btree
   end
 

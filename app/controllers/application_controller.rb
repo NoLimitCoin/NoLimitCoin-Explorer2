@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   # Date:: 2/06/2016
   #
   def set_stats
-    @cmc_data = CmcService.get_ticker_data.first
+    @cmc_data = CmcService.get_ticker_data.try(:first)
     @stats = Stat.last
   end
 end
