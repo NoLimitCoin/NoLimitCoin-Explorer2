@@ -94,3 +94,5 @@ footer {
     font-style: normal;
   }
 }
+
+svg > g > g:last-child { pointer-events: none }
