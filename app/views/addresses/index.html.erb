@@ -1,9 +1,37 @@
 <div class="row center">
   <div class="col-md-8 mbm">
-    <h4 class="left">Company Addresses</h4>
-      <%= render 'addresses/addresses_table', addresses: @company_addresses, offset: 1, paginate: false %>
+  <h4 class="left">Company Addresses</h4>
+    <%= render 'addresses/addresses_table', addresses: @company_addresses, offset: 1, paginate: false %>
 
-    <h4 class="left">Addresses</h4>
-    <%= render 'addresses/addresses_table', addresses: @addresses, offset: @addresses.offset + 1, paginate: true %>
-  </div>
+  <h4 class="left">Addresses</h4>
+  <%= render 'addresses/addresses_table', addresses: @addresses, offset: @addresses.offset + 1, paginate: true %>
 </div>
+
+  <div class="col-md-4">
+  <h4 class="left">Wealth Distribution</h4>
+  <table class="table table-striped table-condensed" id="wealth-distribution">
+    <thead>
+      <tr>
+        <th>Top N addresses</th>
+        <th>Holdings</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% CachedData.wealth_distribution.each do |key, data| %>
+        <tr>
+          <td>
+            <%= key.to_s.titleize %>
+          </td>
+          <td><%= number_to_human(data[:holdings])%> NLC2</td>
+          <td><%= number_to_human(data[:percentage])%> %</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!--Div that will hold the pie chart-->
+  <div id="chart_div"></div>
+</div>
+
+<%= render 'wealth_chart' %>
