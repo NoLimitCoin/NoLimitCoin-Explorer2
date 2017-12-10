@@ -23,7 +23,7 @@ namespace :peers do
             last_recv: peer["last_recv"],
             conn_time: peer["conn_time"],
             version: peer["version"],
-            sub_ver: peer["sub_ver"],
+            sub_ver: peer["subver"],
             inbound: peer["inbound"],
             starting_height: peer["startingheight"],
             ban_score: peer["banscore"]

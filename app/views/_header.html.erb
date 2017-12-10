@@ -24,7 +24,9 @@
               <li class='<%= "active" if request.path == addresses_path %>'>
                 <%= link_to "Addresses", addresses_path %>
               </li>
-              <li><a href="#">Markets</a></li>
+              <li class='<%= "active" if request.path == peers_path %>'>
+                <%= link_to "Network", peers_path %>
+              </li>
               <li><a href="#">API</a></li>
             </ul>
             <%= form_tag '/search', class: 'navbar-form navbar-left' do %>
@@ -38,9 +40,6 @@
                   </span>
                 </div>
             <% end %>
-            <ul class="nav navbar-nav navbar-right">
-                <!--<li><i class="fa fa-twitter"></i></li>-->
-            </ul>
-        </div><!-- /.navbar-collapse -->
+        </div>
     </div>
 </nav>

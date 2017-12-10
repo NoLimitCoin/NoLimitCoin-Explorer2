@@ -21,4 +21,6 @@ Rails.application.routes.draw do
       get 'address', action: :show
     end
   end
+
+  resources :peers, only: [:index]
 end

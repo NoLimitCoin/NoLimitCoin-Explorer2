@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-8 mbm">
+    <h4>Network Clients seen recently</h4>
+    <table class="table table-striped table-condensed">
+      <thead>
+      <tr>
+        <th>Address</th>
+        <th>Protocol</th>
+        <th>Sub Version</th>
+        <th>Country</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @peers.each do |peer| %>
+          <tr>
+            <td><%= peer.ip_address %></td>
+            <td><%= peer.version %></td>
+            <td><%= peer.sub_ver %></td>
+            <td><%= peer.country || "Unknown" %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <div class="row center">
+      <%= will_paginate @peers, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 3 %>
+    </div>
+  </div>
+
+  <div class="col-md-4 center">
+    <h4>Network Clients by country</h4>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </div>
+</div>
+
+<%= render 'peers/peers_geo_chart', peers_by_country: @peers_by_country %>
