@@ -1,0 +1,53 @@
+
+<div class="row">
+  <div class="page-header">
+    <h3>NoLimitCoin2 Explorer API</h3>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Stats API</h3>
+  <p>
+    Coin Summary:
+  </p>
+  <pre><%= request.base_url %>/stats.json</pre>
+</div>
+
+<div class="row">
+  <h3>Blocks API</h3>
+  <p>
+    Blocks List:
+  </p>
+  <pre><%= request.base_url %>/blocks.json?page=1&per_page=10</pre>
+
+  <p>
+    Block Details:
+  </p>
+  <pre><%= request.base_url %>/blocks/block.json?block_hash=5ad6946f22584401301a14154c376d400bafa4bae0f84e6f75bb66fa29f09f66</pre>
+</div>
+
+<div class="row">
+  <h3>Transactions API</h3>
+  <p>
+    Transactions List:
+  </p>
+  <pre><%= request.base_url %>/transactions.json?page=1&per_page=10</pre>
+
+  <p>
+    Transaction Details:
+  </p>
+  <pre><%= request.base_url %>/transactions/transaction.json?tx_hash=62f036dfe7c997a2fe5400a9facd721cfb022857829b0bd4718848a50ac3be79</pre>
+</div>
+
+<div class="row">
+  <h3>Addresses API</h3>
+  <p>
+    Addresses List:
+  </p>
+  <pre><%= request.base_url %>/addresses.json?page=1&per_page=10</pre>
+
+  <p>
+    Address Details:
+  </p>
+  <pre><%= request.base_url %>/addresses/address.json?address=NXomnFjteK3fj6vRaD4rd3yuy3kRBdxY3X</pre>
+</div>

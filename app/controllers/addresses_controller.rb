@@ -45,5 +45,13 @@ class AddressesController < ApplicationController
                               .paginate(page: params[:it_page], per_page: params[:it_per_page] || GlobalConstant::DEFAULT_PER_PAGE)
     @output_transactions = @address.output_transactions
                               .paginate(page: params[:ot_page], per_page: params[:ot_per_page] || GlobalConstant::DEFAULT_PER_PAGE)
+
+    respond_to do |format|
+      format.json do
+        render json: @address, status: 200
+      end
+
+      format.html
+    end
   end
 end

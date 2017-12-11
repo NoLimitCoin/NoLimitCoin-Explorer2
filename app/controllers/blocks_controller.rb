@@ -42,5 +42,13 @@ class BlocksController < ApplicationController
     end
 
     @block = Block.includes(transactions: :outputs).find_by(block_query)
+
+    respond_to do |format|
+      format.json do
+        render json: @block, status: 200
+      end
+
+      format.html
+    end
   end
 end

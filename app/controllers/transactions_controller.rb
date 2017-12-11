@@ -40,5 +40,13 @@ class TransactionsController < ApplicationController
     end
 
     @tx = Transaction.includes(:block, inputs: [:input_address, :input_transaction], outputs: [:output_address]).find_by(tx_query)
+
+    respond_to do |format|
+      format.json do
+        render json: @tx, status: 200
+      end
+
+      format.html
+    end
   end
 end

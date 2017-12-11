@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/' => 'blocks#index'
   post '/search' => 'header#search'
+  get '/api' => 'application#api'
 
   resources :blocks, only: [:index, :show] do
     collection do
@@ -23,4 +24,5 @@ Rails.application.routes.draw do
   end
 
   resources :peers, only: [:index]
+  resources :stats, only: [:index]
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include ExceptionHelper
 
   protect_from_forgery with: :exception
+  before_action :set_stats
 
   private
   # Sets stats of the coin in shared variables
