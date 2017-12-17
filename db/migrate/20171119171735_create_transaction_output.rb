@@ -7,8 +7,8 @@ class CreateTransactionOutput < ActiveRecord::Migration[5.0]
       t.integer :output_index
       t.decimal :value, :limit => 8, :precision => 18, :scale => 8
 
-      t.string :asm
-      t.string :hex
+      t.string :asm, length: 500
+      t.string :hex, length: 500
       t.string :pub_key_type
       t.integer :req_sigs
 

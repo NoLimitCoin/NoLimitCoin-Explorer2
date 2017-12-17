@@ -7,9 +7,9 @@ class CreateTransactionInput < ActiveRecord::Migration[5.0]
 
       t.integer :output_index
 
-      t.string :asm
-      t.string :hex
-      t.integer :sequence, :limit => 8
+      t.string :asm, length: 500
+      t.string :hex, length: 500
+      t.integer :sequence, limit: 8
 
       t.timestamps
 
