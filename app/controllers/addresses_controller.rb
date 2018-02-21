@@ -12,8 +12,7 @@ class AddressesController < ApplicationController
   # Reviewed By::
   #
   def index
-    @company_addresses = Address.where(is_locked_for_game: true).order(balance: :desc)
-    @addresses = Address.where(is_locked_for_game: false).order(balance: :desc)
+    @addresses = Address.where("balance > ?", 0).order(balance: :desc)
                   .paginate(page: params[:page], per_page: params[:per_page] || GlobalConstant::DEFAULT_PER_PAGE)
 
     respond_to do |format|

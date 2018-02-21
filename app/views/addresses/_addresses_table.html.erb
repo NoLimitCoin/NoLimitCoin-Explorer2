@@ -3,19 +3,19 @@
   <tr>
     <th>Rank</th>
     <th>Address</th>
-    <th>Amount</th>
-    <th>Percent of coins</th>
+    <th>Balance (NLC2)</th>
+    <th>%</th>
   </tr>
   </thead>
   <tbody>
   <% addresses.each_with_index do |addr, index| %>
       <tr>
         <td><%= offset + index %></td>
-        <td>
+        <td align="left">
           <%= link_to addr.address, address_path(addr) %>
         </td>
-        <td >
-          <%= addr.balance %> NLC2
+        <td align="left">
+          <%= "%.8f" %addr.balance %> NLC2
         </td>
         <td >
           <%= number_to_human(addr.coin_percentage) %>%

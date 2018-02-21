@@ -7,17 +7,17 @@ set :environment, @environment
 
 set :output, "log/#{ @environment }_cron.log"
 
-# updating peers every hour
+# updating peers every n hours
 every 1.hour do
   rake "peers:update"
 end
 
-# updating blocks every 5 minutes
-every 5.minute do
+# updating blocks every n minutes
+every 1.minute do
   rake "blocks:update"
 end
 
-# updating stats every 5 minutes
-every 5.minute do
+# updating stats every n minutes
+every 2.minute do
   rake "stats:update"
 end

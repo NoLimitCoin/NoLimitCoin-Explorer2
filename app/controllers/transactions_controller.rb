@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
   # Reviewed By::
   #
   def index
-    @transactions = Transaction.includes(:input_addresses, :output_addresses).all.order(block_id: :desc)
+    @transactions = Transaction.includes(:block, :input_addresses, :output_addresses).all.order(block_id: :desc)
                   .paginate(page: params[:page], per_page: params[:per_page] || GlobalConstant::DEFAULT_PER_PAGE)
 
     respond_to do |format|

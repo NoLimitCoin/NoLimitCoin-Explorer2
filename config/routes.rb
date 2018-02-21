@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/' => 'blocks#index'
   post '/search' => 'header#search'
   get '/api' => 'application#api'
+  get '/tx/:tx_hash' => 'transactions#show'
 
   resources :blocks, only: [:index, :show] do
     collection do
