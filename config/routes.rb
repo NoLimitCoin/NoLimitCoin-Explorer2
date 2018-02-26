@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/' => 'blocks#index'
   post '/search' => 'header#search'
   get '/api' => 'application#api'
-  get '/tx/:tx_hash' => 'transactions#show'
 
   resources :blocks, only: [:index, :show] do
     collection do
@@ -26,4 +25,11 @@ Rails.application.routes.draw do
 
   resources :peers, only: [:index]
   resources :stats, only: [:index]
+
+  # Custom routes
+  get '/info' => 'application#api'
+  get '/tx/:tx_hash' => 'transactions#show'
+  get '/richlist' => 'addresses#index'
+  get '/network' => 'peers#index'
+  get '/movement' => 'blocks#index'
 end

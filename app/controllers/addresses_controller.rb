@@ -13,7 +13,8 @@ class AddressesController < ApplicationController
   #
   def index
     @addresses = Address.where("balance > ?", 0).order(balance: :desc)
-                  .paginate(page: params[:page], per_page: params[:per_page] || GlobalConstant::DEFAULT_PER_PAGE)
+                  .paginate(page: params[:page], per_page: params[:per_page] || GlobalConstant::DEFAULT_PER_PAGE,
+                            total_entries: 500)
 
     respond_to do |format|
       format.json do
