@@ -1,0 +1,32 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#blocks" data-toggle="tab">Blocks</a></li>
+</ul>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Block Hash</th>
+      <th>Age</th>
+      <th>Transactions</th>
+      <th>Total Output</th>
+      <th>Difficulty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blocks.each do |block| %>
+      <tr>
+        <td> <%= link_to block.block_index, block_path(block) %> </td>
+        <td> <%= link_to block.block_hash, block_path(block) %> </td>
+        <td> <%= time_ago_in_words(block.time) %> </td>
+        <td class="center"> <%= block.transactions.length %> </td>
+        <td> <%= number_to_human(block.value_out) %> </td>
+        <td> <%= block.difficulty %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row center">
+  <%= will_paginate @blocks, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 3 %>
+</div>

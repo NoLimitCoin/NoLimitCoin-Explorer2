@@ -1,0 +1,47 @@
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><%= GlobalConstant::COIN_NAME %></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class='<%= "active" if request.path == blocks_path %>'>
+                <%= link_to "Blocks", blocks_path %>
+              </li>
+              <li class='<%= "active" if request.path == transactions_path %>'>
+                <%= link_to "Transactions", transactions_path %>
+              </li>
+              <li class='<%= "active" if request.path == addresses_path %>'>
+                <%= link_to "Addresses", addresses_path %>
+              </li>
+              <li class='<%= "active" if request.path == peers_path %>'>
+                <%= link_to "Network", peers_path %>
+              </li>
+              <li class='<%= "active" if request.path == api_path %>'>
+                <%= link_to "API", api_path %>
+              </li>
+            </ul>
+            <%= form_tag '/search', class: 'navbar-form navbar-left' do %>
+                <div class="input-group explorer-search">
+
+                  <input name="search-text" type="text" class="form-control" placeholder="Search address, block or transaction..">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</nav>

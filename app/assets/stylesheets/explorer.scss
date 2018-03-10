@@ -1,0 +1,98 @@
+html {
+  position: relative;
+  min-height: 100%;
+  overflow-y: scroll;
+}
+
+nav {
+  .container-fluid {
+    padding: 0 5% 0 5%;
+  }
+}
+
+nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.main-container {
+  padding: 0 5% 0 5%;
+  margin: 75px 0 75px 0;
+}
+
+
+@media (min-width: 768px) { .explorer-search { width: 80px; } }
+
+@media (min-width: 860px) { .explorer-search { width: 200px; } }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { .explorer-search { width: 300px; } }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { .explorer-search { width: 500px; } }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #f5f5f5;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.no-horizontal-pad {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+////////////////
+// Pagination //
+///////////////
+
+.pagination-container {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+.pagination {
+  border-radius: 2px;
+  border: solid 1px #e1e1e1;
+  margin: 10px 0 10px 0;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  text-align: left;
+
+  a, .previous_page, .next_page {
+    padding: 7px;
+    color: #414141;
+  }
+
+  .current {
+    display: inline-block;
+    background-color: #2968a4;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #ffffff;
+    padding: 5px;
+    font-style: normal;
+  }
+}
+
+svg > g > g:last-child { pointer-events: none }

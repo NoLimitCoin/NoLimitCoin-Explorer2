@@ -1,0 +1,17 @@
+# Config files
+config/rpc_config.yml
+config/constants.yml
+config/database.yml
+config/secrets.yml
+config/deploy/production.rb
+config/deploy/staging.rb
+
+# Temp files
+tmp/
+
+# Rubymine files
+.idea/
+
+# Logs
+log/
+.byebug_history

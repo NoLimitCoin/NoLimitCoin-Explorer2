@@ -1,0 +1,107 @@
+ <div class="row">
+  <h2>
+    <span class="hidden-xs">Details for Transaction </span>
+  </h2>
+  <table class="table" id="details">
+    <tbody>
+    <tr>
+      <td>Hash</td>
+      <td>
+        <code class="hash">
+          <%= @tx.tx_hash %>
+        </code>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>Block Height</td>
+      <td>
+        <%= link_to @tx.block.height, block_path(@tx.block) %> (<%= CachedData.stat.blocks - @tx.block.height %> confirmations)
+      </td>
+    </tr>
+
+    <tr>
+      <td>Block Date/Time</td>
+      <td>
+        <%= @tx.block.time %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Total Output</td>
+      <td>
+        <%= @tx.value_out %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#blocks" data-toggle="tab">Inputs/Outputs</a></li>
+</ul>
+
+
+
+<table class="table table-hover">
+  <thead>
+  <tr class="table-section"><td colspan="4"><h3>Inputs</h3></td></tr>
+  <tr>
+    <th>Input Transaction</th>
+    <% if @tx.tx_type == 'normal' %>
+      <th>Output Index</th>
+      <th>Address</th>
+      <th>Amount</th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% if @tx.tx_type == 'normal' %>
+    <% @tx.inputs.each do |input| %>
+      <tr>
+        <td> <%= input.input_transaction.tx_hash %> </td>
+        <td> <%= input.output_index %> </td>
+        <td> <%= input.input_address.address %> </td>
+        <td> <%= input.input_transaction.outputs.select {|x| x.output_index == input.output_index}.first.value %> </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <td> <%= @tx.tx_type.titleize %> </td>
+  <% end %>
+  </tbody>
+</table>
+
+<table class="table table-hover">
+  <thead>
+  <tr class="table-section"><td colspan="4"><h3>Outputs</h3></td></tr>
+  <tr>
+    <% if @tx.tx_type == 'normal' %>
+      <th>Output Index</th>
+    <% end %>
+    <th>Address</th>
+    <th>Amount</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @tx.tx_type == 'normal' %>
+      <% @tx.outputs.each do |output| %>
+          <tr>
+            <td> <%= output.output_index %> </td>
+            <td> <%= output.output_address.try(:address) %> </td>
+            <td> <%= output.value %> </td>
+          </tr>
+      <% end %>
+  <% elsif @tx.stake_address.present? %>
+    <tr>
+      <td> <%= @tx.stake_address %> </td>
+      <td> <%= @tx.stake_value %> </td>
+    </tr>
+  <% else %>
+    <tr>
+      <td colspan="2" class="center"> Non Standard Transaction </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
