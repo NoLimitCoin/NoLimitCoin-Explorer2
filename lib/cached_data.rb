@@ -10,7 +10,7 @@ class CachedData
     # Reviewed By::
     #
     def wealth_distribution
-      Memcache.fetch("wealth_distribution", 5.minute.to_i) do
+      Memcache.fetch("wealth_distribution", 15.minute.to_i) do
         coin_supply = Stat.last.supply
 
         top_10_holdings = Address.order(balance: :desc).limit(10).pluck(:balance).inject(:+)
@@ -41,7 +41,7 @@ class CachedData
     # Reviewed By::
     #
     def wealth_distribution_graph
-      Memcache.fetch("wealth_distribution_graph", 5.minute.to_i) do
+      Memcache.fetch("wealth_distribution_graph", 15.minute.to_i) do
         coin_supply = Stat.last.supply
 
         top_10_holdings = Address.order(balance: :desc).limit(10).pluck(:balance).inject(:+).to_i
@@ -65,7 +65,7 @@ class CachedData
     # Reviewed By::
     #
     def stat
-      Memcache.fetch("stat", 5.minute.to_i) do
+      Memcache.fetch("stat", 1.minute.to_i) do
         Stat.last
       end
     end
