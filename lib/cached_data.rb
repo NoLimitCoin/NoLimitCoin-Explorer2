@@ -69,5 +69,11 @@ class CachedData
         Stat.last
       end
     end
+
+    def total_blocks
+      Memcache.fetch("total_blocks", 1.second.to_i) do
+        Block.last.block_index+1
+      end
+    end
   end
 end
