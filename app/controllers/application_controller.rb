@@ -15,4 +15,6 @@ class ApplicationController < ActionController::Base
     @cmc_data = CmcService.get_ticker_data.try(:first)
     @stats = Stat.last
   end
+
+
 end

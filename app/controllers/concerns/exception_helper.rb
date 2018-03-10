@@ -8,7 +8,8 @@ module ExceptionHelper
     private
     def error_render_method(e)
       log_and_send_exception_mail(e)
-      render json: { success: false, status_code: 201, message: e.message }
+      flash[:alert] = "Requested resource not found."
+      redirect_to blocks_path
     end
 
     def log_and_send_exception_mail(e)

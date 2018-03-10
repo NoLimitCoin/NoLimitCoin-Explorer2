@@ -12,6 +12,16 @@
     <%= render "/header" %>
     <div class="main-container">
       <%= render "/stats" %>
+      <div class="col-xs-12">
+        <% flash.each do |name, msg| %>
+            <div class="alert alert-warning alert-dismissible show" role="alert">
+              <%= msg %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        <% end %>
+      </div>
       <%= yield %>
     </div>
     <%= render "/footer" %>
