@@ -7,7 +7,7 @@ namespace :blocks do
 
     begin
 
-      for i in new_block_index+1..blockcount-1
+      for i in new_block_index+1..blockcount
         puts "Updating block #{i}"
         update_block(i)
       end
