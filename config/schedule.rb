@@ -18,6 +18,6 @@ every 1.minute do
 end
 
 # updating stats every n minutes
-every 2.minute do
+every 1.minute do
   rake "stats:update"
 end
