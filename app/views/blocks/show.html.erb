@@ -86,7 +86,7 @@
         <td> <%= link_to tx.tx_hash, transaction_path(tx) %> </td>
         <td> <%= tx.tx_type.titleize %> </td>
         <td class="center"> <%= tx.confirmations %> </td>
-        <td> <%= tx.stake_value || tx.value_out %> </td>
+        <td> <%= tx.value_out %> </td>
       </tr>
   <% end %>
   </tbody>

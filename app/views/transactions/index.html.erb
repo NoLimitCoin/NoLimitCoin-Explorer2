@@ -19,7 +19,7 @@
         <td> <%= tx.block.time %> </td>
         <td> <%= tx.tx_type.titleize %> </td>
         <td class="center"> <%= CachedData.stat.blocks - tx.block.height %> </td>
-        <td> <%= "%.8f" %(tx.stake_value || tx.value_out) %> </td>
+        <td> <%= "%.8f" %(tx.value_out) %> </td>
       </tr>
   <% end %>
   </tbody>

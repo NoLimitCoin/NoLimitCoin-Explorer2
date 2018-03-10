@@ -10,7 +10,7 @@ class Block < ActiveRecord::Base
   # Reviewed By::
   #
   def value_out
-    transactions.collect(&:value_out).inject(&:+)
+    stake_value > 0 ? stake_value : transactions.collect(&:value_out).inject(&:+)
   end
 
   # Calculates total coins created as stake

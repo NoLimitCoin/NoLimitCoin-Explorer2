@@ -20,6 +20,6 @@ class Transaction < ActiveRecord::Base
   # Reviewed By::
   #
   def value_out
-    outputs.collect(&:value).inject(&:+)
+    stake_value > 0 ? stake_value : outputs.collect(&:value).inject(&:+)
   end
 end
