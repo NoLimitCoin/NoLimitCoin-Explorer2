@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   get '/richlist' => 'addresses#index'
   get '/network' => 'peers#index'
   get '/movement' => 'blocks#index'
+  get '/ext/getmoneysupply' => 'stats#getmoneysupply'
 end

@@ -1,0 +1,5 @@
+#  RPC Config
+username: RPC_user
+password: RPC_password
+host: xxx.xxx.xxx.xxx
+port: xxxx

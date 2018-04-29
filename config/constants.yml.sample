@@ -1,4 +1,13 @@
+coin:
+  name: NoLimitCoin
+  symbol: NLC2
 
+pagination:
+  default_per_page: 20
+
+cmc:
+  ticker: nolimitcoin
+  url: https://api.coinmarketcap.com/v1/ticker/
 
 
 
